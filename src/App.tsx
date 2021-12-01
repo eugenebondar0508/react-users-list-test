@@ -1,26 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import NewUserAddForm from './components/NewUserAddForm/NewUserAddForm';
+import UserList from './components/UsersList/UserList';
+import { useEffect, useState } from 'react';
+import { deleteUser, getUsers } from './api/api';
 
-function App() {
+import { User } from './interfaces/user'
+import CurrentUser from './components/CurrentUser/CurrentUser';
+
+const App: React.FC = () => {
+
+  const [users, setUsers] = useState<User[]>([]);
+  const [selectedUserById, setUserId] = useState(0)
+
+  const loadUser = () => {
+    getUsers()
+    .then(setUsers);
+  }
+
+  useEffect(loadUser, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+      <UserList 
+        users={users}
+        setUserId={setUserId}
+        loadUser={loadUser}
+      />
+      <NewUserAddForm 
+        users={users} 
+        setUsers={setUsers}
+      />
 
+        <CurrentUser 
+          userId={selectedUserById}
+          deleteUser={(userId: number | undefined) => {
+            deleteUser(userId)
+              .then(loadUser)
+          }}
+          users={users}
+          setUsers={setUsers}
+        />
+    </>
+  )
+};
 export default App;
