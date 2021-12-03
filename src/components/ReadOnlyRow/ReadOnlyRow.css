@@ -1,0 +1,36 @@
+.user:hover {
+  cursor: pointer;
+}
+
+.btn {
+  background-color: brown;
+  color: black;
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(224, 60, 60);
+  translate: 1s;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.btn-link {
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 5px;
+}

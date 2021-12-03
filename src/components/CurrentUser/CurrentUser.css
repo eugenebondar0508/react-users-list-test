@@ -1,0 +1,40 @@
+.current-user {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  max-width: 640px;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: rgb(124, 101, 146);
+}
+
+.back {
+  color: red;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-left: 20px;
+}
+
+.delete-link {
+  text-decoration: none;
+  background-color: brown;
+  color: black;
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 5px;
+  max-width: 70px ;
+  align-items: center;
+}
+
+.edit-btn {
+  max-width: 70px;
+  font-size: 14px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}

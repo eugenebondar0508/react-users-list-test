@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { deleteUser } from '../../api/api';
 import { User } from '../../interfaces/user';
+import NewUserAddForm from '../NewUserAddForm/NewUserAddForm';
 import ReadOnlyRow from '../ReadOnlyRow/ReadOnlyRow';
+import './UserList.css'
 
 
 type Props = {
@@ -16,7 +19,8 @@ const UserList: React.FC<Props> = ({ users, setUserId, loadUser }) => {
 
   return (
     <>
-    <div className="App">
+    <h2>Users list</h2>
+    <div className="list">
       <table>
         <thead>
           <tr>
@@ -40,7 +44,13 @@ const UserList: React.FC<Props> = ({ users, setUserId, loadUser }) => {
           ))}
         </tbody>
       </table>
+
+
     </div>
+
+    <Link to="/newuser" className="add-btn">
+    <button >Add a new user</button>
+    </Link>
     </>
   );
   

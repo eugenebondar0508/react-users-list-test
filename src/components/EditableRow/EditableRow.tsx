@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 type Props = {
@@ -11,6 +12,9 @@ export const EditableRow: React.FC<Props> = ({ editFormDate, handleEditFormChang
 
   return (
     <form onSubmit={handleEditFormSubmit}>
+      <Link to="/" className="back">
+        Back to the users list
+      </Link>
       <h2>Edit the user</h2>
       <label htmlFor="name">First Name</label>
       <input
@@ -70,7 +74,9 @@ export const EditableRow: React.FC<Props> = ({ editFormDate, handleEditFormChang
         value={editFormDate.is_active}
       />
       <label htmlFor="is_active">Is active</label>
-      <button type="submit">Save</button>
+      <button type="submit">
+        Save
+      </button>
       </form>
 
   )

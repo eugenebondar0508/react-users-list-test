@@ -1,0 +1,21 @@
+.new-user {
+  background-color: rgb(136, 174, 231);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 640px;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+textarea {
+  resize: none;
+}
+
+.back {
+  color: red;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-left: 20px;
+}

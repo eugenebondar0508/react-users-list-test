@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { User } from '../../interfaces/user';
 import { addUser, getUsers } from '../../api/api';
 
+import './NewUserAddForm.css'
+import { Link } from 'react-router-dom';
+
 
 type Props = {
   users: User[];
@@ -52,25 +55,20 @@ const NewUserAddForm: React.FC<Props> = ({ users, setUsers}) => {
     addUser(newUser).then(() => {
       getUsers()
       .then(setUsers);
+      event.target.reset();
     })
 
-    return {
-      first_name: '',
-      last_name: '',
-      birth_date: '',
-      gender: 'male',
-      job: '',
-      biography: '',
-      is_active: false,
-    }
-    
+
   }
 
   return (
     <>
-      <h2>Add a user </h2>
-      <form onSubmit={handleAddFormSubmit}>
-        <label htmlFor="name">First Name</label>
+    <Link to="/" className="back">
+    ‹ Back to the users list
+    </Link>
+      <h2>Add a new user </h2>
+      <form onSubmit={handleAddFormSubmit} className="new-user">
+        <label htmlFor="name">First Name:</label>
         <input 
           required
           type="text" 
@@ -79,7 +77,7 @@ const NewUserAddForm: React.FC<Props> = ({ users, setUsers}) => {
           onChange={handleAddFormChange}
         />
 
-        <label htmlFor="lastName">Last Name</label>
+        <label htmlFor="lastName">Last Name:</label>
         <input
           required 
           type="text" 
@@ -103,7 +101,7 @@ const NewUserAddForm: React.FC<Props> = ({ users, setUsers}) => {
           <option value="female">female</option>
         </select>
 
-        <label htmlFor="job">Job</label>
+        <label htmlFor="job">Job:</label>
         <input 
           type="text" 
           required 
@@ -112,23 +110,22 @@ const NewUserAddForm: React.FC<Props> = ({ users, setUsers}) => {
           onChange={handleAddFormChange}
         />
 
-        <label htmlFor="biography">Biography</label>
-        <input 
-          type="text" 
+        <label htmlFor="biography">Biography:</label>
+        <textarea 
           required 
           id="biography" 
           name="biography" 
           onChange={handleAddFormChange}
         />
 
+
+        <label htmlFor="is_active">Is active:</label>
         <input 
           type="checkbox" 
           id="is_active" 
           name="is_active" 
           onChange={handleAddFormChange}
         />
-        <label htmlFor="is_active">Is active</label>
-
         <button type="submit">
           Send
         </button>

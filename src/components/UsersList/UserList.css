@@ -1,0 +1,55 @@
+.list {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  background-color: #706d97;
+}
+
+th {
+  text-align: left;
+  color: #fff;
+  background-color: #706d97;
+}
+td {
+  min-width: 250px;
+  color: #696969;
+  border-bottom: 1px solid #eee;
+}
+th, td {
+  padding: 10px;
+  height: 20px;
+}
+td:first-child {
+  width: 150px;
+  min-width: 0;
+}
+th:last-child {
+  text-align: right;
+}
+td:last-child {
+  width: 80px;
+  min-width: 0;
+  text-align: right;
+}
+tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+.add-btn {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.add-btn button {
+  cursor: pointer;
+}

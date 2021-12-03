@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { getUserById, editUser, getUsers } from '../../api/api'
 import { User } from '../../interfaces/user'
 import EditableRow from '../EditableRow/EditableRow'
+import './CurrentUser.css'
 
 
 type Props = {
   userId: number ;
   deleteUser: (userId: number | undefined) => void;
-  users: User[];
   setUsers: (users: User[]) => void;
 }
-export const CurrentUser:React.FC<Props> = ({ userId, deleteUser, users, setUsers }) => {
+export const CurrentUser:React.FC<Props> = ({ userId, deleteUser, setUsers }) => {
  
   const [user, setUser] = useState<User>();
 
@@ -91,28 +92,28 @@ export const CurrentUser:React.FC<Props> = ({ userId, deleteUser, users, setUser
     <>
       { editUserId === user?.id ?  <EditableRow editFormDate={editFormDate} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit}/> : 
       <>
-        <h2>{user?.first_name} {' '} {user?.last_name}</h2>
-        <p>
-          {user?.biography}
-          {' '}
-          {user?.birth_date}
-          {' '}
-          {user?.job}
-          {' '}
-          {user?.gender}
-          {' '}
-          {user?.is_active}
+        <Link to="/" className="back">
+          Back to the users list
+        </Link>
+        <div  className="current-user">
+        <h3>{user?.first_name} {' '} {user?.last_name}</h3>
+          Biography: {' '}{user?.biography} <br></br>
+          Birthday:{' '}{user?.birth_date}<br></br>
+          Job:{' '}{user?.job}<br></br>
+          Sex:{' '}{user?.gender}<br></br>
+          {user?.is_active}<br></br>
         <button
           type="button"
           onClick={(event) => handleEditClick(event, user)}
+          className="edit-btn"
         >Edit</button>
-        <button
-          type="button"
+        <Link to="/"
           onClick={() => deleteUser(user?.id)}
+          className="delete-link"
         >
           Delete
-        </button>
-        </p>
+        </Link>
+        </div>
       </>
       }
 

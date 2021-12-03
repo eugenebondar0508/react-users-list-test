@@ -7,6 +7,7 @@ import { deleteUser, getUsers } from './api/api';
 
 import { User } from './interfaces/user'
 import CurrentUser from './components/CurrentUser/CurrentUser';
+import { Route, Routes } from 'react-router';
 
 const App: React.FC = () => {
 
@@ -21,25 +22,27 @@ const App: React.FC = () => {
   useEffect(loadUser, [])
   return (
     <>
-      <UserList 
+    <Routes>
+      <Route path="/" element={<UserList 
         users={users}
         setUserId={setUserId}
         loadUser={loadUser}
-      />
-      <NewUserAddForm 
+      />}/>
+      <Route path="newuser" element={<NewUserAddForm 
         users={users} 
         setUsers={setUsers}
-      />
+      />}/>
 
-        <CurrentUser 
+      <Route path="currentuser" element={      <CurrentUser 
           userId={selectedUserById}
           deleteUser={(userId: number | undefined) => {
             deleteUser(userId)
               .then(loadUser)
           }}
-          users={users}
           setUsers={setUsers}
-        />
+      />}/>
+    </Routes>
+
     </>
   )
 };
